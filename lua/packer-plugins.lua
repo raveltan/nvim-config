@@ -72,4 +72,48 @@ return require('packer').startup(function()
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 	use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 	use 'marko-cerovac/material.nvim'
+
+	-- LEARN
+	use 'chentoast/marks.nvim'
+	use 'folke/lsp-colors.nvim'
+	use {
+	  "folke/trouble.nvim",
+	  requires = "kyazdani42/nvim-web-devicons",
+	  config = function()
+		require("trouble").setup {
+		  -- your configuration comes here
+		  -- or leave it empty to use the default settings
+		  -- refer to the configuration section below
+		}
+	  end
+	}
+	use 'onsails/lspkind.nvim'
+	use {
+	  "ray-x/lsp_signature.nvim",
+	}
+	use {
+	  "j-hui/fidget.nvim",
+	  config = function()
+		require("fidget").setup {
+		}
+	  end
+	}
+	use {
+	  "amrbashir/nvim-docs-view",
+	  opt = true,
+	  cmd = { "DocsViewToggle" },
+	  config = function()
+		require("docs-view").setup {
+		  position = "right",
+		  width = 60,
+		}
+	  end
+	}
+	use {
+		's1n7ax/nvim-terminal',
+		config = function()
+			vim.o.hidden = true
+			require('nvim-terminal').setup()
+		end,
+	}
 end)
