@@ -14,9 +14,7 @@ return require('packer').startup(function()
 	-- Luasnip
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
-
-	-- Load spicy gruvbox color theme
-	use 'gruvbox-community/gruvbox'
+	--
 
 	-- Treesitter is life
 	use {
@@ -54,15 +52,6 @@ return require('packer').startup(function()
 	use 'tpope/vim-surround'
 	use 'tpope/vim-fugitive'
 
-	-- Yanking manager (yeah yeah I know, registers exist)
-	use {
-		"AckslD/nvim-neoclip.lua",
-		requires = { {'nvim-telescope/telescope.nvim'} },
-		config = function()
-			require('neoclip').setup()
-		end,
-	}
-
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -76,17 +65,11 @@ return require('packer').startup(function()
 		end
 	}
 
-	--use {
-		--'startup-nvim/startup.nvim',
-		--requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-		--config = function()
-			--require('startup').setup()
-		--end,
-	--}
-
 	use {'mg979/vim-visual-multi'}
 
 	-- Typescript. Oh Typescript. Where art thou Typescript.
 	use 'jose-elias-alvarez/null-ls.nvim'
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+	use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+	use 'marko-cerovac/material.nvim'
 end)
