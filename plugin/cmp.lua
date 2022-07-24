@@ -1,30 +1,30 @@
 -- Reference: https://github.com/hrsh7th/nvim-cmp
 
-local luasnip = require'luasnip'
-local lspkind = require'lspkind'
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 -- Setup nvim-cmp
-local cmp = require'cmp'
+local cmp = require("cmp")
 
 -- check for backspacing
 local check_backspace = function()
-	local col = vim.fn.col "." - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 cmp.setup({
-		formatting = {
+	formatting = {
 		format = lspkind.cmp_format({
-		  mode = 'symbol', -- show only symbol annotations
-		  maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			mode = "symbol", -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
-		  -- The function below will be called before any actual modifications from lspkind
-		  -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-		  before = function (entry, vim_item)
-			return vim_item
-		  end
-		})
-	  },
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function(entry, vim_item)
+				return vim_item
+			end,
+		}),
+	},
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
@@ -32,15 +32,15 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		['<C-e>'] = cmp.mapping({
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -65,41 +65,40 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" }, -- For luasnip users.
 	}, {
-		{ name = 'buffer' },
-	})
+		{ name = "buffer" },
+	}),
 })
 
-
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
-		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
 	}, {
-		{ name = 'buffer' },
-	})
+		{ name = "buffer" },
+	}),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
 	sources = {
-		{ name = 'buffer' }
-	}
+		{ name = "buffer" },
+	},
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
-		{ name = 'path' }
+		{ name = "path" },
 	}, {
-		{ name = 'cmdline' }
-	})
+		{ name = "cmdline" },
+	}),
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 -- require('lspconfig')['gopls'].setup {}

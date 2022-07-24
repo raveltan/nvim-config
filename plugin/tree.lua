@@ -1,3 +1,3 @@
-require'nvim-tree'.setup()
+require("nvim-tree").setup()
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle <CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle <CR>", { noremap = true })

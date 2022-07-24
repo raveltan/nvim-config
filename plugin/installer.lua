@@ -7,9 +7,9 @@ lsp_installer.settings({
 		icons = {
 			server_installed = "✓",
 			server_pending = "➜",
-			server_uninstalled = "✗"
-		}
-	}
+			server_uninstalled = "✗",
+		},
+	},
 })
 
 -- Register a handler that will be called for each installed server
@@ -20,7 +20,7 @@ lsp_installer.on_server_ready(function(server)
 
 	if server.name == "gopls" then
 		opts = {
-			cmd = {"gopls", "serve"},
+			cmd = { "gopls", "serve" },
 			filetypes = { "go", "gomod", "gotmpl", "go.mod" },
 			settings = {
 				gopls = {
@@ -35,12 +35,11 @@ lsp_installer.on_server_ready(function(server)
 		opts.settings = {
 			Lua = {
 				diagnostics = {
-					globals = { 'vim' }
-				}
-			}
+					globals = { "vim" },
+				},
+			},
 		}
 	elseif server.name == "tsserver" then
-
 	end
 
 	-- This setup() function will take the provided server configuration and decorate it with the necessary properties
@@ -48,4 +47,3 @@ lsp_installer.on_server_ready(function(server)
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)
 end)
-
