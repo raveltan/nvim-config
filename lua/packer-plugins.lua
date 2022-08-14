@@ -3,13 +3,20 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- nvim LSP configs
-	use("neovim/nvim-lspconfig")
+	use {
+		"williamboman/mason.nvim" ,
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig"
+	}
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
-	use("williamboman/nvim-lsp-installer")
+	--change to meson.nvim
+	--use("williamboman/nvim-lsp-installer")
+	use ("mfussenegger/nvim-dap")
+	use ("jose-elias-alvarez/null-ls.nvim")
 
 	-- Luasnip
 	use("L3MON4D3/LuaSnip")
@@ -70,7 +77,6 @@ return require("packer").startup(function()
 	use({ "mg979/vim-visual-multi" })
 
 	-- Typescript. Oh Typescript. Where art thou Typescript.
-	use("jose-elias-alvarez/null-ls.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use({ "akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("marko-cerovac/material.nvim")
@@ -121,7 +127,8 @@ return require("packer").startup(function()
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
-	use("sbdchd/neoformat")
+	-- Replace with neoformat
+	--use("sbdchd/neoformat")
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
