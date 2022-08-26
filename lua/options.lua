@@ -11,7 +11,7 @@ vim.o.errorbells = false -- ding ding!
 vim.o.wrap = true -- wrap lines
 vim.o.swapfile = false -- don't need no swap files!
 vim.o.backup = false -- ... or a backup!
-vim.o.undodir = "/home/vel/.undo" -- sets where undo files land
+vim.o.undodir = "/Users/raveltanjaya/.undo" -- sets where undo files land
 vim.cmd([[set undofile]])
 
 vim.o.scrolloff = 8 -- scroll offwidth so it's not the very bottom
